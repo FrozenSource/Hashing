@@ -35,7 +35,7 @@ set(Headers
 set(Sources
         ${PROJECT_SOURCE_DIR}/src/Hashing.cpp)
         
-add_library(${This} ${Headers} ${Sources})
+add_library(${This} ${BLAKE2_HEADERS} ${BLAKE2_SOURCES} ${Headers} ${Sources})
 target_link_libraries(${This} PUBLIC Core)
 target_include_directories(${This} PUBLIC ${PROJECT_SOURCE_DIR}/include ${BLAKE2_INCLUDE_DIR})
 
