@@ -18,6 +18,7 @@ function(InstallVendor project_name git_repo)
                         SUBBUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/${project_name}-sub"
                 )
                 FetchContent_MakeAvailable(${project_name})
+                set(${project_name} CACHE INTERNAL "")
                 message(STATUS "Found ${project_name}")
         endif()
 endfunction()
@@ -27,9 +28,9 @@ project(${This} LANGUAGES C CXX)
 
 InstallVendor(Core https://CorrupD:hiddenhand@git.nipqer.nl/CorrupD/Core.git)
 InstallVendor(BLAKE2 https://github.com/BLAKE2/BLAKE2.git)
-file(GLOB_RECURSE BLAKE2_HEADERS RELATIVE ${PROJECT_SOURCE_DIR} "vendor/BLAKE2/ref/*.h")
-file(GLOB_RECURSE BLAKE2_SOURCES RELATIVE ${PROJECT_SOURCE_DIR} "vendor/BLAKE2/ref/*.c")
-set(BLAKE2_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/vendor/BLAKE2/ref/")
+file(GLOB_RECURSE BLAKE2_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "vendor/BLAKE2/ref/*.h")
+file(GLOB_RECURSE BLAKE2_SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "vendor/BLAKE2/ref/*.c")
+set(BLAKE2_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/vendor/BLAKE2/ref/")
 
 set(Headers
         ${PROJECT_SOURCE_DIR}/include/Hashing.hpp)
