@@ -9,14 +9,16 @@ FetchContent_Declare(SetupHunter GIT_REPOSITORY https://github.com/cpp-pm/gate)
 FetchContent_MakeAvailable(SetupHunter)
 
 function(InstallVendor project_name git_repo)
-        FetchContent_Declare(
-                ${project_name}
-                GIT_REPOSITORY ${git_repo}
-                SOURCE_DIR "${PROJECT_SOURCE_DIR}/vendor/${project_name}"
-                BINARY_DIR ${CMAKE_BINARY_DIR}
-                SUBBUILD_DIR ${CMAKE_BINARY_DIR}
-        )
-        FetchContent_MakeAvailable(${project_name})
+        IF (NOT ${project_name})
+                FetchContent_Declare(
+                        ${project_name}
+                        GIT_REPOSITORY ${git_repo}
+                        SOURCE_DIR "${PROJECT_SOURCE_DIR}/vendor/${project_name}"
+                        BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}
+                        SUBBUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}
+                )
+                FetchContent_MakeAvailable(${project_name})
+        endif()
 endfunction()
 
 set(This Hashing)
