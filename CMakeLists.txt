@@ -13,21 +13,10 @@ function(InstallVendor project_name git_repo)
                 ${project_name}
                 GIT_REPOSITORY ${git_repo}
                 SOURCE_DIR "${PROJECT_SOURCE_DIR}/vendor/${project_name}"
-                BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}
-                SUBBUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}
+                BINARY_DIR ${CMAKE_BINARY_DIR}
+                SUBBUILD_DIR ${CMAKE_BINARY_DIR}
         )
-        FetchContent_GetProperties(${project_name})
-        if(NOT "${project_name}_POPULATED")
-                FetchContent_Populate(${project_name})
-                message(STATUS "Downloaded ${project_name}")
-                if(EXISTS "${PROJECT_SOURCE_DIR}/vendor/${project_name}/CMakeLists.txt")
-                        message(STATUS "Configuring: ${project_name}")
-                        add_subdirectory("${PROJECT_SOURCE_DIR}/vendor/${project_name}")
-                endif()
-                message(STATUS "Installed ${project_name}")
-        else()
-                message(STATUS "Found ${project_name}")
-        endif()
+        FetchContent_MakeAvailable(${project_name})
 endfunction()
 
 set(This Hashing)
