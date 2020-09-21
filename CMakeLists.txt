@@ -13,12 +13,13 @@ function(InstallVendor project_name git_repo)
                 FetchContent_Declare(
                         ${project_name}
                         GIT_REPOSITORY ${git_repo}
-                        SOURCE_DIR "${PROJECT_SOURCE_DIR}/vendor/${project_name}"
-                        BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}
-                        SUBBUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}
+                        SOURCE_DIR "${CMAKE_SOURCE_DIR}/vendor/${project_name}"
+                        BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/${project_name}"
+                        SUBBUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/${project_name}-sub"
                 )
                 FetchContent_MakeAvailable(${project_name})
         endif()
+        message(STATUS "Found ${project_name}")
 endfunction()
 
 set(This Hashing)
