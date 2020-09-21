@@ -18,8 +18,8 @@ function(InstallVendor project_name git_repo)
                         SUBBUILD_DIR "${CMAKE_CURRENT_BINARY_DIR}/${project_name}-sub"
                 )
                 FetchContent_MakeAvailable(${project_name})
+                message(STATUS "Found ${project_name}")
         endif()
-        message(STATUS "Found ${project_name}")
 endfunction()
 
 set(This Hashing)
