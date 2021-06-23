@@ -1,6 +1,6 @@
 #pragma once
-#include <Core.hpp>
+#include <string>
 #include <blake2.h>
 
-bool HashFile(const string & sFileName, string & sHashOut);
-bool Hash(const string& sBuffer, string & sHashOut);
+bool HashFile(const std::string & sFileName, std::string & sHashOut);
+bool Hash(const std::string& sBuffer, std::string & sHashOut);
