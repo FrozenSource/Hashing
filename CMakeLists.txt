@@ -30,9 +30,9 @@ set(This Hashing)
 project(${This} LANGUAGES C CXX)
 
 InstallVendor(BLAKE2 https://github.com/BLAKE2/BLAKE2.git master)
-file(GLOB_RECURSE BLAKE2_HEADERS "${CMAKE_SOURCE_DIR}/vendor/BLAKE2/ref/*.h")
-file(GLOB_RECURSE BLAKE2_SOURCES "${CMAKE_SOURCE_DIR}/vendor/BLAKE2/ref/*.c")
-set(BLAKE2_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/vendor/BLAKE2/ref/")
+file(GLOB_RECURSE BLAKE2_HEADERS "${PROJECT_SOURCE_DIR}/vendor/BLAKE2/ref/*.h")
+file(GLOB_RECURSE BLAKE2_SOURCES "${PROJECT_SOURCE_DIR}/vendor/BLAKE2/ref/*.c")
+set(BLAKE2_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/vendor/BLAKE2/ref/")
 
 set(Headers
         ${PROJECT_SOURCE_DIR}/include/Hashing.hpp)
